@@ -3,12 +3,13 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Winning Tickets-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                <viewController title="Winning Tickets" id="BYZ-38-t0r" customClass="WinningTicketViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,14 +17,34 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RHz-g4-cgw">
+                                <rect key="frame" x="20" y="192" width="560" height="216"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="216" id="efi-kD-aDT"/>
+                                </constraints>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rvG-eC-ooM">
+                                <rect key="frame" x="251" y="416" width="98" height="30"/>
+                                <state key="normal" title="Check Tickets"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="rvG-eC-ooM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4dG-Yk-Vd6"/>
+                            <constraint firstItem="RHz-g4-cgw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Ig6-aP-icP"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="RHz-g4-cgw" secondAttribute="trailing" id="WxA-gg-eAa"/>
+                            <constraint firstItem="RHz-g4-cgw" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="rBc-cf-BMp"/>
+                            <constraint firstItem="RHz-g4-cgw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="wDw-c9-yTj"/>
+                            <constraint firstItem="rvG-eC-ooM" firstAttribute="top" secondItem="RHz-g4-cgw" secondAttribute="bottom" constant="8" id="yqb-lK-3qq"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1014" y="815"/>
+            <point key="canvasLocation" x="1189" y="815"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Tickets-->
         <scene sceneID="lgM-aj-CSc">
             <objects>
                 <tableViewController id="YJj-4d-1b5" customClass="TicketsTableViewController" sceneMemberID="viewController">
@@ -62,7 +83,7 @@
                             <outlet property="delegate" destination="YJj-4d-1b5" id="IsL-z8-f5q"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="rc4-PO-PWb">
+                    <navigationItem key="navigationItem" title="Tickets" id="rc4-PO-PWb">
                         <barButtonItem key="leftBarButtonItem" title="Check Winners" id="9a3-IU-i4i">
                             <connections>
                                 <action selector="checkWinners:" destination="YJj-4d-1b5" id="YNl-sn-hK0"/>
@@ -70,7 +91,8 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="boF-pC-J4c">
                             <connections>
-                                <action selector="createTicket:" destination="YJj-4d-1b5" id="cJ3-RF-RfE"/>
+                                <action selector="createTicket:" destination="YJj-4d-1b5" id="rs9-JL-Cab"/>
+                                <segue destination="BYZ-38-t0r" kind="show" id="tQg-Y4-uyS"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
