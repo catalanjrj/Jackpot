@@ -7,7 +7,7 @@
 //
 
 #import "Tickets.h"
-
+#import "WinningTicketViewController.h"
 @interface Ticket(){
 
     NSMutableArray * picks;

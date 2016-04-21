@@ -8,19 +8,23 @@
 
 #import "TicketsTableViewController.h"
 #import "Tickets.h"
+#import "WinningTicketViewController.h"
 
-@interface TicketsTableViewController (){
+@interface TicketsTableViewController () <WinningTicketViewControllerDelagete>{
 /// on root view total number of winnins and cost of total number of winnings
 NSMutableArray *tickets;
     int totalWon;
     int totalSpent;
 }
+
 -(IBAction)createTicket:(id)sender;
 -(IBAction)checkWinners:(id)sender;
 
 @end
 
 @implementation TicketsTableViewController
+-(void)returnThePickedNumbers:(NSArray*)numbersPicked{
+        }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -43,7 +47,7 @@ NSMutableArray *tickets;
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
- 
+    
     return 1;
 }
 
@@ -104,15 +108,18 @@ NSMutableArray *tickets;
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-}
-*/
+    if([segue.identifier isEqualToString:@"GIVE ME SOMETHING TO LOOK FOR"]){
+        WinningTicketViewController * wtvc =(WinningTicketViewController *)segue.destinationViewController;wtvc.delegate = self;}
+    }
+
+
 
 -(IBAction)createTicket:(id)sender{
     Ticket * aTicket = [Ticket ticketUsingQuickPick];
