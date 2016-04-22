@@ -24,7 +24,7 @@ NSMutableArray *tickets;
 
 @implementation TicketsTableViewController
 -(void)returnThePickedNumbers:(NSArray*)numbersPicked{
-        }
+     [self checkWinners:numbersPicked];        }
 
 - (void)viewDidLoad {
     [super viewDidLoad];

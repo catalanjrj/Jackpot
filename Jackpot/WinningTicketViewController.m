@@ -39,7 +39,7 @@
 
 -(IBAction)checkTicket:(UIButton*)sender;{
     if (hasPickedAllNumbers){
-        [self.delegate returnThePickedNumbers:0];}
+        [self.delegate returnThePickedNumbers:pickedNumbers];}
 }//what are the numbers exactly?
 
 
