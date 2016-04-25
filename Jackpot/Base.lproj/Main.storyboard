@@ -35,6 +35,13 @@
                                     <action selector="checkTicket:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0wo-vI-yFw"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lob-yU-Zvk">
+                                <rect key="frame" x="245" y="454" width="110" height="30"/>
+                                <state key="normal" title="Random Winner"/>
+                                <connections>
+                                    <action selector="randomWinner:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hm5-GQ-5vB"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -46,6 +53,9 @@
                             <constraint firstItem="rvG-eC-ooM" firstAttribute="top" secondItem="RHz-g4-cgw" secondAttribute="bottom" constant="8" id="yqb-lK-3qq"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="pickerView" destination="RHz-g4-cgw" id="78C-ZZ-25x"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

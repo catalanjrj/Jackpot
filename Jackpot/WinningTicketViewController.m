@@ -8,6 +8,7 @@
 
 #import "WinningTicketViewController.h"
 #import "TicketsTableViewController.h"
+#import "Tickets.h"
 //delagetes and datasources here!!!!!
 @interface WinningTicketViewController () <UIPickerViewDelegate, UIPickerViewDataSource>{
     NSMutableArray * pickedNumbers;
@@ -40,7 +41,20 @@
 -(IBAction)checkTicket:(UIButton*)sender;{
     if (hasPickedAllNumbers){
         [self.delegate returnThePickedNumbers:pickedNumbers];}
-}//what are the numbers exactly?
+}
+
+    -(IBAction)randomWinner:(UIButton *)sender{
+        Ticket * randomTicket = [Ticket ticketUsingQuickPick];
+        int index = 0;
+        
+        do {
+            NSInteger getNumber = [randomTicket.picks[index] integerValue];
+            [_pickerView selectRow:getNumber inComponent:index animated:YES];
+            index += 1;
+        } while (index < 6);
+        
+         pickedNumbers = [randomTicket.picks mutableCopy];
+    }//what are the numbers exactly?
 
 
 

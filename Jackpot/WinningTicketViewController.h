@@ -23,5 +23,6 @@
 @property(weak,nonatomic) IBOutlet id <WinningTicketViewControllerDelagete>delegate;
 
 -(IBAction)checkTicket:(UIButton*)sender;
+-(IBAction)randomWinner:(UIButton*)sender;
 
 @end
