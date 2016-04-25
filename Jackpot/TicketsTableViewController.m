@@ -15,6 +15,8 @@
 NSMutableArray *tickets;
     int totalWon;
     int totalSpent;
+    int totalWinnings;
+    
 }
 
 -(IBAction)createTicket:(id)sender;
@@ -37,6 +39,7 @@ NSMutableArray *tickets;
     tickets = [[NSMutableArray alloc]init];
     totalWon = 0;
     totalSpent = 0;
+    totalWinnings = 0;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -122,6 +125,8 @@ NSMutableArray *tickets;
 
 
 -(IBAction)createTicket:(id)sender{
+   
+    
     Ticket * aTicket = [Ticket ticketUsingQuickPick];
     [tickets addObject:aTicket];
     totalSpent += aTicket.priceOFOneTicket;
@@ -145,6 +150,16 @@ NSMutableArray *tickets;
     [self.tableView reloadData];
     
 
+}
+-(void)returnPickedNumbers:(NSArray *) array{
+    
+    Ticket *winningTicket = [Ticket ticketUsingArray:array];
+    for (Ticket * ticket in tickets){
+        [ticket compareWithTicket:winningTicket];
+        
+        totalWinnings = totalWinnings + [ticket.payout intValue];
+    }
+    
 }
 
 @end

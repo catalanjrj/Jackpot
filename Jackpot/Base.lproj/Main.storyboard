@@ -35,7 +35,7 @@
                                     <action selector="checkTicket:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0wo-vI-yFw"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lob-yU-Zvk">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lob-yU-Zvk">
                                 <rect key="frame" x="245" y="454" width="110" height="30"/>
                                 <state key="normal" title="Random Winner"/>
                                 <connections>
@@ -46,14 +46,18 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="rvG-eC-ooM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4dG-Yk-Vd6"/>
+                            <constraint firstItem="lob-yU-Zvk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="225" id="IEX-TG-PkT"/>
                             <constraint firstItem="RHz-g4-cgw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Ig6-aP-icP"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="lob-yU-Zvk" secondAttribute="trailing" constant="225" id="R0a-xT-m3C"/>
                             <constraint firstAttribute="trailingMargin" secondItem="RHz-g4-cgw" secondAttribute="trailing" id="WxA-gg-eAa"/>
+                            <constraint firstItem="lob-yU-Zvk" firstAttribute="top" secondItem="rvG-eC-ooM" secondAttribute="bottom" constant="8" id="ipo-60-bb7"/>
                             <constraint firstItem="RHz-g4-cgw" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="rBc-cf-BMp"/>
                             <constraint firstItem="RHz-g4-cgw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="wDw-c9-yTj"/>
                             <constraint firstItem="rvG-eC-ooM" firstAttribute="top" secondItem="RHz-g4-cgw" secondAttribute="bottom" constant="8" id="yqb-lK-3qq"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="delegate" destination="rvG-eC-ooM" id="LRs-Da-I8K"/>
                         <outlet property="pickerView" destination="RHz-g4-cgw" id="78C-ZZ-25x"/>
                     </connections>
                 </viewController>
