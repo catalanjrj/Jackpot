@@ -76,7 +76,9 @@ if(!dontAdd){
     
     [picks addObject:pickNumber];
     
+    
     }
+    
 }
 
 

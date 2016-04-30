@@ -14,14 +14,19 @@
     NSMutableArray * pickedNumbers;
     BOOL hasPickedAllNumbers;
 }
+-(BOOL)numbersPicked;
 
 @end
 
 @implementation WinningTicketViewController
--(void)returnThePickedNumbers{
-}
+
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+
+    self.checkTicketButton.enabled = NO;
     hasPickedAllNumbers = NO;
     // Do any additional setup after loading the view.
     pickedNumbers = [@[[NSNumber numberWithInt:0],
@@ -36,12 +41,15 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-
--(IBAction)checkTicket:(UIButton*)sender;{
-    if (hasPickedAllNumbers){
-        [self.delegate returnThePickedNumbers:pickedNumbers];}
+-(BOOL)numbersPicked{
+    for (NSNumber *pickedNumber in pickedNumbers) {
+        if ([pickedNumber isEqualToNumber:@0]) {
+            return NO;
+        }
+    }
+    return YES;
 }
+
 
     -(IBAction)randomWinner:(UIButton *)sender{
         Ticket * randomTicket = [Ticket ticketUsingQuickPick];
@@ -54,13 +62,26 @@
         } while (index < 6);
         
          pickedNumbers = [randomTicket.picks mutableCopy];
-    }//what are the numbers exactly?
+        //checked if all numbers have been picked and activate check button.
+        
+        if ([self numbersPicked]) {
+            self.checkTicketButton.enabled = YES;
+            hasPickedAllNumbers = YES;
+        } else {
+            self.checkTicketButton.enabled = NO;
+            hasPickedAllNumbers = NO;
+        }
+    }
+-(IBAction)checkTicket:(UIButton*)sender;{
+            if (hasPickedAllNumbers){
+                [self.delegate returnThePickedNumbers:pickedNumbers];}
+}
+//what are the numbers exactly?
+
+//check if all numbers have been picked!!
 
 
-
-
-
-
+#pragma mark UIPickerView
 
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
     return 6;
@@ -77,10 +98,17 @@
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
     pickedNumbers[component] = [NSNumber numberWithLong:row +1];
     
-    NSLog(@"%ld was chosen in component %ld",(long)row+1,(long)component+1);
+    
+    if ([self numbersPicked]) {
+        self.checkTicketButton.enabled = YES;
+        hasPickedAllNumbers = YES;
+    } else {
+        self.checkTicketButton.enabled = NO;
+        hasPickedAllNumbers = NO;
 }
 
 
+}
 
 #pragma mark - Navigation
 

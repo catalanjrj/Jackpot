@@ -28,18 +28,19 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="yIU-Mg-3uP"/>
                                 </connections>
                             </pickerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rvG-eC-ooM">
-                                <rect key="frame" x="251" y="416" width="98" height="30"/>
-                                <state key="normal" title="Check Tickets"/>
-                                <connections>
-                                    <action selector="checkTicket:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0wo-vI-yFw"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lob-yU-Zvk">
                                 <rect key="frame" x="245" y="454" width="110" height="30"/>
                                 <state key="normal" title="Random Winner"/>
                                 <connections>
                                     <action selector="randomWinner:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hm5-GQ-5vB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rvG-eC-ooM">
+                                <rect key="frame" x="251" y="416" width="98" height="30"/>
+                                <state key="normal" title="Check Tickets"/>
+                                <connections>
+                                    <action selector="checkTicket:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4ze-6v-vG0"/>
+                                    <segue destination="yrc-WI-0CC" kind="unwind" unwindAction="returnToTickets:" id="2YJ-OY-WTM"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -57,13 +58,14 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="delegate" destination="rvG-eC-ooM" id="LRs-Da-I8K"/>
+                        <outlet property="checkTicketButton" destination="rvG-eC-ooM" id="L7T-3n-Ftk"/>
                         <outlet property="pickerView" destination="RHz-g4-cgw" id="78C-ZZ-25x"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="yrc-WI-0CC" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1189" y="815"/>
+            <point key="canvasLocation" x="1295" y="681"/>
         </scene>
         <!--Tickets-->
         <scene sceneID="lgM-aj-CSc">
@@ -85,7 +87,7 @@
                                             <rect key="frame" x="15" y="12" width="67" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Payout" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ykp-dJ-TaG">
@@ -105,15 +107,14 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Tickets" id="rc4-PO-PWb">
-                        <barButtonItem key="leftBarButtonItem" title="Check Winners" id="9a3-IU-i4i">
+                        <barButtonItem key="leftBarButtonItem" title="Create Winner" id="9a3-IU-i4i">
                             <connections>
-                                <action selector="checkWinners:" destination="YJj-4d-1b5" id="YNl-sn-hK0"/>
+                                <segue destination="BYZ-38-t0r" kind="show" identifier="winners" id="9uy-kd-Ljd"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="boF-pC-J4c">
                             <connections>
                                 <action selector="createTicket:" destination="YJj-4d-1b5" id="rs9-JL-Cab"/>
-                                <segue destination="BYZ-38-t0r" kind="show" id="tQg-Y4-uyS"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -125,7 +126,7 @@
                     <state key="normal" title="Button"/>
                 </button>
             </objects>
-            <point key="canvasLocation" x="506" y="815"/>
+            <point key="canvasLocation" x="568" y="815"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="PML-Ay-xJB">

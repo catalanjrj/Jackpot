@@ -25,8 +25,6 @@ NSMutableArray *tickets;
 @end
 
 @implementation TicketsTableViewController
--(void)returnThePickedNumbers:(NSArray*)numbersPicked{
-     [self checkWinners:numbersPicked];        }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -45,6 +43,11 @@ NSMutableArray *tickets;
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)returnThePickedNumbers:(NSArray *)pickedNumbers {
+    [self checkWinners:pickedNumbers];
+    
 }
 
 #pragma mark - Table view data source
@@ -76,51 +79,18 @@ NSMutableArray *tickets;
     return cell;
 }
 
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    if([segue.identifier isEqualToString:@"GIVE ME SOMETHING TO LOOK FOR"]){
+    if([segue.identifier isEqualToString:@"winners"]){
         WinningTicketViewController * wtvc =(WinningTicketViewController *)segue.destinationViewController;wtvc.delegate = self;}
     }
+- (IBAction)returnToTickets:(UIStoryboardSegue *)segue {
+    
+}
 
 
 
@@ -142,6 +112,11 @@ NSMutableArray *tickets;
         
         [lottoTicket compareWithTicket:aWinningTicket];
         totalWon += [lottoTicket.payout intValue];
+        
+        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"payout" ascending:NO];
+        NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
+        tickets = [[tickets sortedArrayUsingDescriptors:sortDescriptors] mutableCopy];
+
        
         
     }
@@ -149,17 +124,10 @@ NSMutableArray *tickets;
     
     [self.tableView reloadData];
     
+    
 
 }
--(void)returnPickedNumbers:(NSArray *) array{
-    
-    Ticket *winningTicket = [Ticket ticketUsingArray:array];
-    for (Ticket * ticket in tickets){
-        [ticket compareWithTicket:winningTicket];
-        
-        totalWinnings = totalWinnings + [ticket.payout intValue];
-    }
-    
-}
+
+
 
 @end
